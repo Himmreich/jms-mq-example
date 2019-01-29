@@ -1,5 +1,5 @@
 # jms-mq-example
-Basic Example to use MQ with Spring
+Basic Example to use MQ with Spring Boot
 
 # IMPORTANT
 Artifact wmq.jmsra necessary for the specific classes for MQ
