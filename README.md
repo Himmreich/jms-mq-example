@@ -6,7 +6,7 @@ Artifact wmq.jmsra necessary for the specific classes for MQ
 
     <groupId>com.ibm.mq</groupId>
     <artifactId>wmq.jmsra</artifactId>
-    <version>9.1.1.0</version>
+    <version>9.3.3.0</version>
 
 If you want to receive messages, you must activate the 'Client' connection mode on the QueueManager or you will be have the error message:
 
