@@ -1,10 +1,6 @@
 package jms.mq.example;
 
-import javax.jms.JMSException;
-import javax.jms.Message;
-import javax.jms.Session;
-import javax.jms.TextMessage;
-
+import jakarta.jms.TextMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -12,7 +8,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ImportResource;
 import org.springframework.jms.annotation.EnableJms;
 import org.springframework.jms.core.JmsTemplate;
-import org.springframework.jms.core.MessageCreator;
 
 @SpringBootApplication
 @EnableJms
@@ -28,14 +23,10 @@ public class Application implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		jmsTemplate.send(new MessageCreator() {
-			
-			@Override
-			public Message createMessage(Session session) throws JMSException {
-				TextMessage textMessage = session.createTextMessage();
-				textMessage.setStringProperty("VALUE", "value");
-				return textMessage;
-			}
-		});
+		jmsTemplate.send(session -> {
+            TextMessage textMessage = session.createTextMessage();
+            textMessage.setStringProperty("VALUE", "value");
+            return textMessage;
+        });
 	}
 }
